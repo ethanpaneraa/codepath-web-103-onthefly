@@ -36,7 +36,8 @@ const getTrips = async (req, res) => {
 };
 
 const getTripById = async (req, res) => {
-    const { id } = parseInt(req.params.id); 
+    const id  = parseInt(req.params.id); 
+    console.log(id);
 
     if (!id) {
         return res.status(400).json({ error: "Missing required fields" });
@@ -56,7 +57,7 @@ const getTripById = async (req, res) => {
 };
 
 const updateTrip = async (req, res) => {
-    const { id } = parseInt(req.params.id); 
+    const id  = parseInt(req.params.id); 
     const { title, description, img_url, num_days, start_date, end_date, total_cost } = req.body; 
 
     if (!id || !title || !description || !img_url || !num_days || !start_date || !end_date || !total_cost) {
@@ -78,7 +79,7 @@ const updateTrip = async (req, res) => {
 };
 
 const deleteTrip = async (req, res) => {
-    const { id } = parseInt(req.params.id); 
+    const id  = parseInt(req.params.id); 
 
     if (!id) {
         return res.status(400).json({ error: "Missing required fields" });
@@ -100,6 +101,7 @@ const deleteTrip = async (req, res) => {
 export default {
     createTrip, 
     getTrips, 
-    getTripById, 
+    getTripById,
+    updateTrip, 
     deleteTrip, 
 };
