@@ -89,8 +89,8 @@ const createTripsDestinationsTable = async () => {
             trip_id int NOT NULL, 
             destination_id int NOT NULL, 
             PRIMARY KEY(trip_id, destination_id),
-            FOREIGN KEY(trip_id) references trips(id), ON UPDATE CASCADE,
-            FOREIGN KEY(destination_id) references destinations(id), ON UPDATE CASCADE
+            FOREIGN KEY(trip_id) references trips(id) ON UPDATE CASCADE,
+            FOREIGN KEY(destination_id) references destinations(id) ON UPDATE CASCADE
         );
     `;
 
@@ -131,8 +131,8 @@ const createTripsUsersTable = async () => {
             trip_id int NOT NULL, 
             user_id int NOT NULL, 
             PRIMARY KEY(trip_id, user_id),
-            FOREIGN KEY(trip_id) REFERENCES trips(id), ON UPDATE CASCADE,
-            FOREIGN KEY(user_id) REFERENCES users(id), ON UPDATE CASCADE
+            FOREIGN KEY(trip_id) REFERENCES trips(id) ON UPDATE CASCADE,
+            FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE
         );
     `;
 
