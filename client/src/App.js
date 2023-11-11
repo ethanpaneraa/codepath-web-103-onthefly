@@ -19,8 +19,17 @@ const App = () => {
   const [destinations, setDestinations] = useState([]);
 
   useEffect(() => {
-
-
+    const getTrips = async () => {
+      try {
+        const response = await fetch("http://localhost:3001/api/trips");
+        const data = await response.json(); 
+        setTrips(data);
+      } 
+      catch (error) {
+        console.error(error.message);
+      };
+    };
+    getTrips();
   }, []);
 
   // Sets up routes
