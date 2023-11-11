@@ -6,7 +6,6 @@ const CreateTrip = () => {
     const [post, setPost] = useState({id: 0, title: "", description: "", img_url: "", num_days: 0, start_date: "", end_date: "", total_cost: 0.0 });
 
     
-    
     const handleChange = (event) => {
         const {name, value} = event.target;
         setPost( (prev) => {
@@ -15,13 +14,21 @@ const CreateTrip = () => {
                 [name]:value,
             }
         })
-    }
+    };
     
-    const createPost = (event) => {
+    const createTrip = (event) => {
         event.preventDefault();
 
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(post)
+        };
 
-        
+        fetch("http://localhost:3001/api/trips", options);
+        window.location.href = "/"; 
     }
 
 
@@ -58,7 +65,7 @@ const CreateTrip = () => {
                 <input type="text" id="total_cost" name="total_cost" value={post.total_cost} onChange={handleChange}/><br />
                 <br/>
 
-                <input type="submit" value="Submit" onClick={createPost} />
+                <input type="submit" value="Submit" onClick={createTrip} />
             </form>
         </div>
     )
