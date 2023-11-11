@@ -27,6 +27,16 @@ const EditTrip = ({data}) => {
     const updatePost = (event) => {
         event.preventDefault();
 
+        const options = {
+            method: "PATCH", 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(post)
+        };
+
+        fetch("http://localhost:3001/api/trips/" + id, options);
+        window.location.href = "/"; 
 
 
     }
@@ -34,8 +44,13 @@ const EditTrip = ({data}) => {
 
     const deletePost = (event) => {
         event.preventDefault();
-
         
+        const options = {
+            method: "DELETE", 
+        };
+
+        fetch("http://localhost:3001/api/trips/" + id, options);
+        window.location.href = "/"; 
     }
 
     return (
